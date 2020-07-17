@@ -18,6 +18,12 @@ class CreateTodo extends Component {
       .set(this.state)
       .then(() => {
         alert("Todo submitted");
+        this.setState({
+          name: "",
+          description: "",
+          startDate: "",
+          endDate: ""
+        })
       });
   };
 
@@ -29,18 +35,18 @@ class CreateTodo extends Component {
             type="text"
             name="name"
             placeholder="Name of todo..."
-            onChange={e => this.setState({ name: e.target.value })}
+            value={this.state.name} onChange={e => this.setState({ name: e.target.value })}
             required
           />
           <textarea
             type="text"
             name="description"
             placeholder="description of todo..."
-            onChange={e => this.setState({ description: e.target.value })}
+            value={this.state.description} onChange={e => this.setState({ description: e.target.value })}
             required
           />
-          <input type="date" name="start date" onChange={e => this.setState({ startDate: e.target.value })} required  />
-          <input type="date" name="end date" onChange={e => this.setState({ endDate: e.target.value })} min={this.state.startDate} />
+          <input type="date" name="start date" value={this.state.startDate} onChange={e => this.setState({ startDate: e.target.value })} required  />
+          <input type="date" name="end date" value={this.state.endDate} onChange={e => this.setState({ endDate: e.target.value })} min={this.state.startDate} />
           <input type="submit" value="Submit Todo" className={styles.button} />
         </form>
       </section>

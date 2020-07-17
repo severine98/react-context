@@ -7,9 +7,11 @@ class TodoList extends Component {
   render() {
     return (
       <section className={styles.todos}>
-        {this.props.todos.map(todo => {
-          return <Todo todo={todo} />;
-        })}
+        {this.props.todos
+          .sort((a, b) => Date.parse(new Date(a.startDate)) - Date.parse(new Date(b.startDate)))
+          .map(todo => {
+            return <Todo todo={todo} />;
+          })}
       </section>
     );
   }
